@@ -19,7 +19,8 @@ from geo_disturbance import geoDisturbance
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 def iyuu(IYUU_TOKEN):
-    url = f"https://iyuu.cn/{IYUU_TOKEN}.send"
+    # url = f"https://iyuu.cn/{IYUU_TOKEN}.send"
+    url = f'https://sc.ftqq.com/{IYUU_TOKEN}.send'
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     def send(text, desp=""):
         Form = {'text': text, 'desp': desp}
@@ -91,6 +92,7 @@ class Fudan:
             "password": self.psw,
             "service" : "https://zlapp.fudan.edu.cn/site/ncov/fudanDaily"
         }
+        print(self.psw)
 
         # 获取登录页上的令牌
         data.update(
@@ -252,7 +254,8 @@ if __name__ == '__main__':
         uname = IYUU_TOKE[1]
         pwd = IYUU_TOKE[2]
         IYUU_TOKE = IYUU_TOKE[0]
-        if IYUU_TOKE.startswith('IYUU'):
+        # if IYUU_TOKE.startswith('IYUU'):
+        if IYUU_TOKE.startswith('SCT'):
             iy_info = iyuu(IYUU_TOKE)
         else:
             def iy_info(text, desp=""):
